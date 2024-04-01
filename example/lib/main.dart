@@ -171,9 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<Size> _getImageSize(Image image) {
     Completer<Size> completer = Completer<Size>();
-    image.image.resolve(ImageConfiguration());
-    // image.image.resolve(ImageConfiguration()).addListener(
-    //         (ImageInfo info, bool _) => completer.complete());
+    image.image.resolve(ImageConfiguration()).addListener(ImageStreamListener((image, synchronousCall) => completer.complete(Size(200.0,200.0))));
     return completer.future;
   }
 }
